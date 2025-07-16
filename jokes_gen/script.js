@@ -21,11 +21,22 @@ generateBtn.addEventListener('click', () => {
 
 addFavoriteBtn.addEventListener('click', () => {
   if (currentJoke) {
+    // Проверка: ищем, есть ли уже такой анекдот в списке
+    const existingItems = favoritesList.querySelectorAll('.favorite-item');
+    const alreadyExists = Array.from(existingItems).some(item => item.textContent === currentJoke);
+
+    if (alreadyExists) {
+      // Можно всплывающее сообщение, мигание, или просто ничего не делать
+      console.log('Этот анекдот уже в избранном!');
+      return;
+    }
+
+    // Если нет — добавляем
     const item = document.createElement('div');
     item.className = 'favorite-item';
     item.textContent = currentJoke;
 
-    // Добавляем обработчик клика для удаления
+    // Удаление по клику
     item.addEventListener('click', () => {
       item.remove();
     });
@@ -33,3 +44,4 @@ addFavoriteBtn.addEventListener('click', () => {
     favoritesList.appendChild(item);
   }
 });
+
