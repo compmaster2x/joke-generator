@@ -24,6 +24,12 @@ addFavoriteBtn.addEventListener('click', () => {
     const item = document.createElement('div');
     item.className = 'favorite-item';
     item.textContent = currentJoke;
+
+    // Добавляем обработчик клика для удаления
+    item.addEventListener('click', () => {
+      item.remove();
+    });
+
     favoritesList.appendChild(item);
   }
 });
