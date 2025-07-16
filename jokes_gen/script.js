@@ -14,10 +14,19 @@ const addFavoriteBtn = document.getElementById('addFavoriteBtn');
 const favoritesList = document.getElementById('favoritesList');
 
 generateBtn.addEventListener('click', () => {
-  const randomIndex = Math.floor(Math.random() * jokes.length);
+  if (jokes.length === 0) return;
+
+  let randomIndex = Math.floor(Math.random() * jokes.length);
+
+  // Если выпала та же шутка — сдвинем индекс на +1 (с переходом через край)
+  if (jokes[randomIndex] === currentJoke && jokes.length > 1) {
+    randomIndex = (randomIndex + 1) % jokes.length;
+  }
+
   currentJoke = jokes[randomIndex];
   jokeDiv.textContent = currentJoke;
 });
+
 
 addFavoriteBtn.addEventListener('click', () => {
   if (currentJoke) {
