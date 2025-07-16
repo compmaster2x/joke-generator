@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор анекдотов</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      height: 100vh; 
+      margin: 0;
+      background: #f0f0f0;
+    }
+    #joke {
+      font-size: 1.4em;
+      margin: 20px;
+      text-align: center;
+      max-width: 500px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Генератор анекдотов</h1>
+  <div id="joke">Нажми кнопку, чтобы получить анекдот!</div>
+  <button onclick="generateJoke()">Новый анекдот</button>
+
+  <script>
+    const jokes = [
+      "Встречаются два программиста. Один другому: «Ты знаешь, я свою жену в Git добавил… Теперь всегда могу откатить!»",
+      "Программисты делятся на два типа: те, кто делает бэкап, и те, кто будет делать бэкап.",
+      "Системный администратор не моет руки, он делает refresh.",
+      "— Пап, а почему солнце всходит на востоке?\n— Работает, не трогай!",
+      "Ошибка компиляции — это когда программа говорит тебе, где ты ошибся. Ошибка выполнения — это когда программа говорит тебе, что ты ошибся. А сегфолт — это когда программа молча уходит."
+    ];
+
+    function generateJoke() {
+      const randomIndex = Math.floor(Math.random() * jokes.length);
+      document.getElementById('joke').textContent = jokes[randomIndex];
+    }
+  </script>
+
+</body>
+</html>
