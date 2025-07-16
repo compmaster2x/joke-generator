@@ -25,6 +25,12 @@ generateBtn.addEventListener('click', () => {
 
   currentJoke = jokes[randomIndex];
   jokeDiv.textContent = currentJoke;
+
+  const exists = Array.from(favoritesList.children).some(
+    item => item.textContent === currentJoke
+  );
+
+  jokeDiv.style.color = exists ? 'goldenrod' : 'black';
 });
 
 
