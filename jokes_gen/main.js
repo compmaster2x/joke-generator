@@ -1,11 +1,10 @@
-import { initGenerator } from './js/generator.js';
-import { initFavorites } from './js/favorites.js';
-import { getCurrentJoke } from './js/generator.js';
+import { JokeApp } from './js/JokeApp.js';
 
-const jokeDiv = document.getElementById('joke');
-const generateBtn = document.getElementById('generateBtn');
-const addFavoriteBtn = document.getElementById('addFavoriteBtn');
-const favoritesList = document.getElementById('favoritesList');
+const app = new JokeApp({
+  jokeDiv: document.getElementById('joke'),
+  generateBtn: document.getElementById('generateBtn'),
+  addFavoriteBtn: document.getElementById('addFavoriteBtn'),
+  favoritesList: document.getElementById('favoritesList')
+});
 
-initGenerator(jokeDiv, generateBtn, favoritesList);
-initFavorites(addFavoriteBtn, favoritesList, getCurrentJoke);
+app.init();
